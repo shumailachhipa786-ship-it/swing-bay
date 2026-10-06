@@ -27,3 +27,28 @@ if(matchMedia('(pointer:fine)').matches){
     card.addEventListener('mouseleave',()=>{card.style.transform='';const img=card.querySelector('img');if(img)img.style.transform=''});
   });
 }
+
+// Working mobile hamburger menu
+const menuBtn=document.querySelector('.menu-btn');
+const desktopNav=document.querySelector('.desktop-nav');
+if(menuBtn&&desktopNav){
+  const mobileNav=document.createElement('nav');
+  mobileNav.className='mobile-nav-panel';
+  mobileNav.setAttribute('aria-label','Mobile navigation');
+  mobileNav.innerHTML=desktopNav.innerHTML;
+  document.body.appendChild(mobileNav);
+  menuBtn.setAttribute('aria-expanded','false');
+  menuBtn.addEventListener('click',()=>{
+    const open=mobileNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded',String(open));
+    menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+    menuBtn.textContent=open?'✕':'☰';
+  });
+  mobileNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+    mobileNav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+    menuBtn.setAttribute('aria-label','Open menu');
+    menuBtn.textContent='☰';
+  }));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobileNav.classList.contains('open')){mobileNav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';}});
+}

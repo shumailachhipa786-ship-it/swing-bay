@@ -58,3 +58,10 @@ dialog{background:#080b08;border-color:rgba(255,195,66,.35)}
 @keyframes logoRing{0%,100%{transform:scale(.98);opacity:.45}50%{transform:scale(1.025);opacity:.9}}
 @media(max-width:1100px){.scene-card.logo-hero>img{width:82%;height:82%}}
 @media(max-width:680px){.scene-card.logo-hero{min-height:350px}.scene-card.logo-hero>img{width:94%;height:94%}.logo-hero .tag-two{display:none}}
+/* Mobile menu functionality fix */
+.mobile-nav-panel{display:none;position:fixed;top:78px;left:20px;right:20px;z-index:49;padding:18px;background:rgba(7,11,8,.97);border:1px solid rgba(115,255,61,.28);border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.55);backdrop-filter:blur(16px)}
+.mobile-nav-panel.open{display:grid;gap:4px}
+.mobile-nav-panel a{color:#f6f8f5;text-decoration:none;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:14px 12px;border-radius:12px}
+.mobile-nav-panel a:hover{color:var(--lime);background:rgba(115,255,61,.07)}
+.menu-btn{cursor:pointer;position:relative;z-index:51}
+@media(min-width:1101px){.mobile-nav-panel{display:none!important}}
